@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Halloween</title>
+    <style>
+        body {
+            background:url('https://img.freepik.com/free-vector/gradient-halloween-frame-template_23-2149083045.jpg?w=1060&t=st=1700677044~exp=1700677644~hmac=04a4ca43b34874b6925e0b3efc970b498d59f835782e053a19a39898a5d73e44');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+                        
+            color: #9e6fba;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #invitation {
+            background:url('https://img4.thuthuatphanmem.vn/uploads/2019/10/26/background-chu-de-halloween_093146835.jpg');
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6600;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        #cta {
+            margin-top: 20px;
+        }
+
+        #cta a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        #cta a:hover {
+            background-color: #cc5200;
+        }
+
+        video {
+            width: 100%;
+            max-height: 300px;
+            margin-top: 20px;
+        }
+
+        #contact, #registration {
+            display: none;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: px;
+            color: #ff6600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ff6600;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #ff6600;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #cc5200;
+        }
+    </style>
+</head>
+<body>
+    <div id="invitation">
+        <h1>Thiệp Mời Halloween</h1>
+        <p>Bạn được mời tham gia buổi tiệc Halloween với chúng tôi!</p>
+        <p>Ngày: 31 tháng 10</p>
+        <p>Thời gian: 23:00</p>
+        <p>Địa điểm: Tại nhà số 29</p>
+        <p>Hãy tham gia ngay cùng chúng tôi!</p>
+        <div id="cta">
+            <a href="#" onclick="showRegistration()">Đăng ký tham gia</a>
+        </div>
+        
+            <iframe width="540" height="300" src="https://www.youtube.com/embed/7KdqnAuzBxM?si=Bbl512vJXNyGYeoo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
+    </div>
+
+    <!-- Contact Form -->
+    <div id="contact">
+        <form>
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <input type="submit" value="Gửi">
+        </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registration">
+        <form>
+            <label for="eventName">Tên sự kiện:</label>
+            <input type="text" id="eventName" name="eventName" required>
+
+            <label for="participantName">Tên bạn:</label>
+            <input type="text" id="participantName" name="participantName" required>
+
+            <input type="submit" value="Đăng ký">
+        </form>
+    </div>
+
+    <script>
+        // Add sound
+        var audio = new Audio('<iframe width="560" height="315" src="https://www.youtube.com/embed/7KdqnAuzBxM?si=Bbl512vJXNyGYeoo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>');
+
+        // Function to show registration form
+        function showRegistration() {
+            audio.play();
+            document.getElementById('invitation').style.display = 'none';
+            document.getElementById('registration').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
