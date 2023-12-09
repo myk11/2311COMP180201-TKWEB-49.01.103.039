@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm</title>
+    <style>
+        
+
+        
+        body {
+            background-color: white;
+            color: #070707;
+            text-align:left ;
+            margin: 0;
+            padding: 0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        #contactInfo {
+            text-align: center;
+        }
+
+       
+        table {
+            width: 100%;
+            margin-bottom: 70px;
+            background-color: rgb(239, 241, 239);
+            
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #80b494;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 7px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Thêm Sản Phẩm</h2>
+        <form id="add-product-form">
+            <label for="productName">Tên Sản Phẩm:</label>
+            <input type="text" id="productName" name="productName" required>
+            <input type="submit" value="Thêm">
+        </form>
+        <h1>Quản Lý Sản Phẩm</h1>
+    
+
+    <div id="product-list">
+        <h2>Danh Sách Sản Phẩm</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Thứ Tự</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+            </tbody>
+        </table>
+
+        
+    </div>
+
+    <script>
+      
+        let products = [
+            { id: 1, name: 'Samsung Galaxy' },
+            { id: 2, name: 'Oppo A71' },
+            { id: 3, name: 'Apple Ip 6S' },
+            { id: 4, name: 'Nokia 5' },
+            { id: 5, name: 'Sony Xperia' },
+        ];
+
+    
+        function displayProducts() {
+            const tableBody = document.getElementById('product-table-body');
+            tableBody.innerHTML = '';
+
+            for (const product of products) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>
+                        <button onclick="editProduct(${product.id})">Sửa</button>
+                        <button onclick="deleteProduct(${product.id})">Xóa</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+
+        
+        function addProduct(productName) {
+            const newProduct = {
+                id: products.length + 1,
+                name: productName
+            };
+            products.push(newProduct);
+            displayProducts();
+        }
+
+     
+        function editProduct(productId) {
+            const newName = prompt('Nhập tên mới cho sản phẩm:');
+            const productIndex = products.findIndex(product => product.id === productId);
+
+            if (productIndex !== -1 && newName !== null) {
+                products[productIndex].name = newName;
+                displayProducts();
+            }
+        }
+
+       
+        function deleteProduct(productId) {
+            const confirmDelete = confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');
+
+            if (confirmDelete) {
+                products = products.filter(product => product.id !== productId);
+                displayProducts();
+            }
+        }
+
+       
+        const addProductForm = document.getElementById('add-product-form');
+        addProductForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const productName = document.getElementById('productName').value;
+            addProduct(productName);
+            addProductForm.reset();
+        });
+
+       
+        displayProducts();
+    </script>
+</body>
+</html>
